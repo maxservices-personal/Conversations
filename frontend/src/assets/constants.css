@@ -1,0 +1,225 @@
+:root {
+  --token-base-100: #fff;
+  --token-base-200: #f7f7f7;
+  --token-base-300: #eeeeee;
+
+  --token-base-200-blured: #f7f7f780;
+  --bg-gradient-blured: #ffffff, #fffffff1, transparent;
+  --bg-gradient-blured-2: #ffffffd2, transparent;
+
+  --token-border-medium: hsla(0, 0%, 37%, 0.15);
+  --token-border-light: hsla(0, 0%, 43%, 0.1);
+  --token-border-dark: rgba(150, 150, 150, 0.5);
+
+  --token-primary: #008cff;
+  --token-primary1: #fc2effc0;
+  --token-primary2: #26d9cda5;
+  --token-primary3: #e7ac19a5;
+
+  --token-secondary: #006eff;
+
+  --token-user-selected: #e5f3ff;
+
+  --token-primary-text: #00284d;
+  --token-primary-text-2: #00284dc7;
+
+  --token-text-primary: #000;
+  --token-text-secondary: #1f1f1f;
+
+  --token-loader-gradient-2:#353535, #353535, #353535,#353535, #353535,#f5f5f5,#353535, #353535, #353535, #353535;
+}
+
+[data-theme="dark"] {
+  --token-base-100: #070707;
+  --token-base-200: #202020;
+  --token-base-300: #141414;
+  
+
+  --token-border-medium: hsla(0, 0%, 37%, 0.15);
+  --token-border-light: hsla(0, 0%, 43%, 0.1);
+  --token-border-dark: rgba(150, 150, 150, 0.5);
+
+  --token-primary: #008cff;
+  --token-primary1: #fc2effc0;
+  --token-primary2: #26d9cda5;
+  --token-primary3: #e7ac19a5;
+
+  --token-secondary: #006eff;
+
+  --token-user-selected: #e5f3ff;
+
+  --token-primary-text: #00284d;
+  --token-primary-text-2: #00284dc7;
+
+  --token-text-primary: #fff;
+  --token-text-secondary: #aaaaaa;
+
+
+  --token-loader-gradient-2:#353535, #353535, #353535,#353535, #353535,#f5f5f5,#353535, #353535, #353535, #353535;
+
+  
+}
+
+
+/* * {
+  text-shadow: 1px 1px 13px #2727273b;;
+} */
+
+.threads-loader path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 70;
+  stroke-linecap: round;
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+  animation: draw 1.5s ease-in-out infinite;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 1500;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -1500;
+  }
+}
+
+.threads-loader.loaded {
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.fade-in-animate-new-inverse {
+  animation: alternate fadeInNewInverse 0.4s ease-in-out forwards;
+}
+
+@keyframes fadeInNewInverse {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.fade-in-animate {
+  animation: alternate fadeIn 0.4s ease-in-out forwards;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.fade-in-animate-new {
+  animation: alternate fadeInNew 0.4s ease-in-out forwards;
+}
+
+@keyframes fadeInNew {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.fade-in-normal-animate {
+  animation: alternate fadeIn2 1.9s ease-in-out forwards;
+}
+
+@keyframes fadeIn2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.onHoverShow .onHoverShowTarget {
+  opacity: 0;
+}
+
+.onHoverShow:hover .onHoverShowTarget {
+  opacity: 1;
+}
+
+.highlight {
+  animation: flash-bg2 2s ease;
+}
+
+.highlight .inside-msg {
+  animation: flash-bg 2s ease;
+}
+
+@keyframes flash-bg {
+  0% {
+   scale: 1;
+  }
+  50% {
+   scale: 1.1;
+  }
+  100% {
+   scale: 1;
+  }
+}
+
+@keyframes flash-bg2 {
+  0% {
+   background: transparent;
+  }
+  50% {
+   background: #5c5c5c2f;
+  }
+  100% {
+   background: transparent;
+
+  }
+}
+
+
+
+.loader-clasic{
+  background: linear-gradient(90deg, var(--token-loader-gradient-2));
+  background-size: 200% auto;
+  font-weight: 600;
+  -webkit-background-clip: text;
+  user-select: none;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 1s linear infinite;
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: -100% 0%;
+  }
+}
+
+
+.gradient-blur {
+  background: linear-gradient(180deg, var(--bg-gradient-blured));
+}
+
+.gradient-blur-2 {
+  background: linear-gradient(0deg, var(--bg-gradient-blured-2));
+
+}
