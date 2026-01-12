@@ -1,13 +1,12 @@
 # Conversations - Under Development
  
- This is a full-stack web application that allows users to engage in real-time conversations with AI-powered friends. Built with a modern tech stack, it offers a seamless and interactive chat experience.
+ This is a full-stack web application that allows users to engage in real-time conversations. Built with a modern tech stack, it offers a seamless and interactive chat experience.
  
  ## Features
  
  - User Authentication: Secure login and registration using Google OAuth.
- - Real-time Chat: Instant messaging with AI friends powered by OpenAI's GPT-4.
  - Multimedia Support: Send and receive images, audio, and documents in chats.
- - Friend Management: Add, remove, and manage AI friends.
+ - Friend Management: Add, remove, and manage friends.
  - Responsive Design: Optimized for both desktop and mobile devices.
  
  ## Tech Stack
