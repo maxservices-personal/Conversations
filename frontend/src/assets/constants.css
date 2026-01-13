@@ -4,7 +4,7 @@
   --token-base-300: #eeeeee;
 
   --token-base-200-blured: #f7f7f780;
-  --bg-gradient-blured: #ffffff, #fffffff1, transparent;
+  --bg-gradient-blured: #ffffffe5, #ffffffd8, transparent;
   --bg-gradient-blured-2: #ffffffd2, transparent;
 
   --token-border-medium: hsla(0, 0%, 37%, 0.15);
@@ -64,6 +64,10 @@
 /* * {
   text-shadow: 1px 1px 13px #2727273b;;
 } */
+
+.spreaded-blur-shadow {
+  text-shadow: 1px 1px 13px #2727273b;
+}
 
 .threads-loader path {
   fill: none;

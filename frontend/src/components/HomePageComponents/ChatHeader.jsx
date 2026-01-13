@@ -77,7 +77,9 @@ const ChatHeader = () => {
           onClick={() => setIsContactInfo(!isContactInfo)}
           className="flex select-none cursor-pointer items-center ml-2"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" className="p-1 ml-1 mr-1 hover:text-[#000000] text-[#545454]" fill="currentColor"><path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+          <button onClick={() => setSelectedFriend(null)} className="p-1 ml-1 mr-1 hover:text-[#000000] text-[#545454]">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+          </button>
           <div className="w-14 h-14 relative rounded-full flex items-center justify-center bg-white border border-token-border-medium">
             {selectedFriend?.profilePic ? (
               <img

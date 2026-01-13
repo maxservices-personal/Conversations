@@ -31,7 +31,7 @@ const Sidebar = () => {
   } = useAuthStore();
 
   const { selectedFriend, setSelectedFriend } = useChatStore()
-  const { getMessages, setMessages, setReplyingData, markAsSeen, getNewMessageCount } = useMessageStore();
+  const { getMessages, setMessages, setReplyingData, markAsSeen, getNewMessageCount, getNewMessage } = useMessageStore();
   const { isSidebarOpen, toggleSidebar, toggleIsSettingsOpen, toggleIsOnStandBy ,setIsAddMoment, isAddMoment } = useUIStore();
   const [friendTyping, setFriendTyping] = useState({
     userId: null
@@ -233,6 +233,7 @@ const Sidebar = () => {
                       ) : (
                         <span className="block text-[14px] text-[#8f8f8f]">@{user.username}</span>
                       )}
+                      <span className="block text-[14px] text-[#8f8f8f]">{getNewMessage(user._id)}</span>
                     </div>
                     {getNewMessageCount(user._id) === 0 ? (
                       <div className="ml-auto">

@@ -63,7 +63,7 @@ export const useMessageStore = create((set, get) => ({
 
   new_messages: [],
   setNewMessages: (data) => set({ new_messages: data }),
-  addNewMessage: (user_id) => {
+  addNewMessage: (user_id, message) => {
     const messages = get().new_messages;
 
     const index = messages.findIndex((msg) => msg.user_id === user_id);
@@ -72,10 +72,11 @@ export const useMessageStore = create((set, get) => ({
       // User exists, increment the number_of_messages
       const updated = [...messages];
       updated[index].number_of_messages += 1;
+      updated[index].message = message
       set({ new_messages: updated });
     } else {
       // User does not exist, add a new entry
-      set({ new_messages: [...messages, { user_id, number_of_messages: 1 }] });
+      set({ new_messages: [...messages, { user_id, number_of_messages: 1, message: message }] });
     }
   },
   markAsSeen: (user_id) => {
@@ -92,6 +93,13 @@ export const useMessageStore = create((set, get) => ({
     const userMsg = messages.find((msg) => msg.user_id === user_id);
 
     return userMsg ? userMsg.number_of_messages : 0;
+  },
+  getNewMessage: (user_id) => {
+    const messages = get().new_messages;
+
+    const userMsg = messages.find((msg) => msg.user_id === user_id)
+    console.log(userMsg)
+    return userMsg ? userMsg.message : "";
   },
   setUploadFilesSelected: (value)=>set({uploadFilesSelected: value}),
   uploadFile: async () => {
