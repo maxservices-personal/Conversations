@@ -7,16 +7,39 @@ export default {
   theme: {
     extend: {
       colors: {
-          "token-base-100": 'var(--token-base-100)',
-          "token-base-200": 'var(--token-base-200)',
-          "token-base-200-blured": 'var(--token-base-200-blured)',
-          "token-base-300": 'var(--token-base-300)',
-          "token-border-light": 'var(--token-border-light)',
-          "token-border-medium": 'var(--token-border-medium)',
-          "token-border-dark": 'var(--token-border-dark)',
-          "token-primary": "var(--token-primary)",
-          "token-secondary": "var(--token-secondary)",
-          "gradient-blured": "var(--bg-gradient-blured)",
+         base: {
+          100: "hsl(212, 20%, 92%)",
+          200: "hsl(212, 18%, 88%)",
+          300: "hsl(212, 20%, 76%)",
+        },
+
+        accent: {
+          100: "hsl(208, 48%, 47%)",
+          200: "hsl(208, 58%, 37%)",
+          300: "hsl(208, 68%, 27%)",
+        },
+
+        text: {
+          primary: "hsl(212, 20%, 12%)",
+          secondary: "hsl(212, 20%, 32%)",
+          tertiary: "hsl(212, 20%, 52%)",
+        },
+
+        border: {
+          100: "hsl(212, 20%, 72%)",
+          200: "hsl(212, 20%, 62%)",
+          300: "hsl(212, 20%, 52%)",
+        },
+
+        status: {
+          success: "hsl(145, 55%, 45%)",
+          error: "hsl(0, 70%, 50%)",
+          warning: "hsl(38, 90%, 55%)",
+          info: "hsl(208, 48%, 47%)",
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

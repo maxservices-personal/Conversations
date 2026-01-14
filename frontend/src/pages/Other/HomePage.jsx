@@ -22,8 +22,8 @@ const HomePage = () => {
 
   
   return (
-    <div className="flex w-full h-full overflow-x-hidden">
-      <div className="absolute fade-in-normal-animate opacity-50 bg-contain  top-0 left-0 bg-[url(/1000063412.png)] blur-3xl w-full h-full z-[1]"></div>
+    <div className="flex w-full h-full text-text-primary font-inter overflow-x-hidden bg-base-100">
+      {/* <div className="absolute fade-in-normal-animate opacity-50 bg-contain  top-0 left-0 bg-[url(/1000063412.png)] blur-3xl w-full h-full z-[1]"></div> */}
       <Sidebar />
       {selectedFriend ? <ChatScreen playSound={playSound} /> : isOnStandBy ? <StandBy /> : <ChatNotSelected />}
       <audio ref={audioRef} src={notificationSound} className="hidden" />

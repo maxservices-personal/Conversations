@@ -4,7 +4,7 @@ import ChatContainer from './ChatContainer'
 
 const ChatScreen = ({ playSound }) => {
   return (
-    <div className='w-full md:w-[calc(100%-320px)] z-[2] relative h-full'>
+    <div className='w-full border-l border-token-border-medium md:w-[calc(100%-320px)] z-[2] relative h-full'>
       <ChatHeader />
       <ChatContainer playSound={playSound} />
     </div>

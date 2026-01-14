@@ -41,7 +41,7 @@ const App = () => {
   console.log("Auth User:", authUser);
 
   if (isCheckingAuth) return (
-    <div data-theme={theme} className="flex items-center justify-center bg-token-base-100 w-full h-screen text-[var(--token-text-secondary)]">
+    <div data-theme={theme} className="flex items-center justify-center bg-token-base-100 w-full h-screen text-accent-100">
       <svg xmlns="http://www.w3.org/2000/svg"
           width="80" height="80" viewBox="0 -960 960 960"
           className="threads-loader" aria-hidden="true" role="img">

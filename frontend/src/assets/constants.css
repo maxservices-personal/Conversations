@@ -227,3 +227,21 @@
   background: linear-gradient(0deg, var(--bg-gradient-blured-2));
 
 }
+
+.scrollbar-track-hidden {
+  scrollbar-width: thin;           
+  scrollbar-color: rgba(0,0,0,0.4) transparent;
+}
+
+.scrollbar-track-hidden::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-track-hidden::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-track-hidden::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.35);
+  border-radius: 9999px;
+}

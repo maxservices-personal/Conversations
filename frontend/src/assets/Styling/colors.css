@@ -1,0 +1,20 @@
+:root {
+    --base-100: hsl(212, 20%, 92%);
+    --base-200: hsl(212, 20%, 84%);
+    --base-300: hsl(212, 20%, 76%);
+
+    --base-accent-100: hsl(208, 48%, 47%);
+    --base-accent-200: hsl(208, 58%, 37%);
+    --base-accent-300: hsl(208, 68%, 27%);
+
+    --base-text-primary: hsl(212, 20%, 12%);
+    --base-text-secondary: hsl(212, 20%, 32%);
+    --base-text-tertiary: hsl(212, 20%, 52%);
+
+    --border-100: hsl(212, 20%, 72%);
+    --border-200: hsl(212, 20%, 62%);
+    --border-300: hsl(212, 20%, 52%);
+
+    --status-success: hsl(145, 55%, 45%);
+    --status-error: hsl(0, 70%, 50%);
+}

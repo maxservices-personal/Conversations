@@ -7,7 +7,7 @@ const ChatNotSelected = () => {
   return (
     <div className='flex relative md:static items-center justify-center h-full w-full md:w-[calc(100%-320px)]'>
         <div className="absolute top-0 px-4 left-0 flex items-center justify-between w-full h-[64px] bg-[#ffffff34] backdrop-blur-md z-10 border-b border-token-border-light md:hidden">
-            <span className='text-[#555] flex items-center gap-2'><svg
+            <span className='text-[hsl(208,48%,44%)] flex items-center gap-2'><svg
               xmlns="http://www.w3.org/2000/svg"
               height="32"
               viewBox="0 -960 960 960"
@@ -22,7 +22,7 @@ const ChatNotSelected = () => {
                 </SingleTypeButton>
         </div>
         <div className="w-full h-full overflow-hidden flex items-center justify-center flex-col relative ">
-            <span className='w-full fade-in-animate relative z-10 text-[#666666c2] flex items-center justify-center'>
+            <span className='w-full fade-in-animate relative z-10 text-[hsl(208,48%,44%)] flex items-center justify-center'>
                  <svg
               xmlns="http://www.w3.org/2000/svg"
               height="58"
@@ -33,11 +33,10 @@ const ChatNotSelected = () => {
               <path d="M554-120q-54 0-91-37t-37-89q0-76 61.5-137.5T641-460q-3-36-18-54.5T582-533q-30 0-65 25t-83 82q-78 93-114.5 121T241-277q-51 0-86-38t-35-92q0-54 23.5-110.5T223-653q19-26 28-44t9-29q0-7-2.5-10.5T250-740q-10 0-25 12.5T190-689l-70-71q32-39 65-59.5t65-20.5q46 0 78 32t32 80q0 29-15 64t-50 84q-38 54-56.5 95T220-413q0 17 5.5 26.5T241-377q10 0 17.5-5.5T286-409q13-14 31-34.5t44-50.5q63-75 114-107t107-32q67 0 110 45t49 123h99v100h-99q-8 112-58.5 178.5T554-120Zm2-100q32 0 54-36.5T640-358q-46 11-80 43.5T526-250q0 14 8 22t22 8Z" />
             </svg>
             </span>
-            <span className='font-semibold relative z-10 fade-in-animate text-[42px] pointer-events-none select-none text-[#898989e0]'>Conversations</span>
-            <span className='w-full fade-in-animate-new relative z-10 text-[#292929c2] mt-4 flex flex-col items-center justify-center'>
+            <span className='font-bold relative z-10 fade-in-animate text-[42px] pointer-events-none select-none text-text-primary'>Conversations</span>
+            <span className='w-full fade-in-animate-new relative z-10 text-text-secondary mt-2 flex flex-col items-center justify-center'>
                 <span>Let’s get the conversation started.</span>
                 <span>With <a href="/direct/end-to-end-encryption/description" className='text-token-primary underline'>end-to-end encryption</a>.</span>
-                <span className='text-[12px] font-semibold mt-1'>Powered by Max AI services</span>
             </span>
         </div>
     </div>

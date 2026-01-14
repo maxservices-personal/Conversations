@@ -63,26 +63,25 @@ export const useMessageStore = create((set, get) => ({
 
   new_messages: [],
   setNewMessages: (data) => set({ new_messages: data }),
-  addNewMessage: (user_id, message) => {
+  addNewMessage: (message) => {
     const messages = get().new_messages;
 
-    const index = messages.findIndex((msg) => msg.user_id === user_id);
+    const index = messages.findIndex((msg) => msg.user_id === message.sender_id);
 
     if (index !== -1) {
-      // User exists, increment the number_of_messages
       const updated = [...messages];
       updated[index].number_of_messages += 1;
-      updated[index].message = message
+      updated[index].message = message.text;
+      updated[index].timestamp = message.timestamp;
       set({ new_messages: updated });
     } else {
-      // User does not exist, add a new entry
-      set({ new_messages: [...messages, { user_id, number_of_messages: 1, message: message }] });
+      const id = message.sender_id;
+      set({ new_messages: [...messages, { id, number_of_messages: 1, message: message.text, timestamp: message.timestamp }] });
     }
   },
   markAsSeen: (user_id) => {
     const messages = get().new_messages;
 
-    // Filter out the user_id we want to remove
     const updated = messages.filter((msg) => msg.user_id !== user_id);
 
     set({ new_messages: updated });
@@ -107,7 +106,7 @@ export const useMessageStore = create((set, get) => ({
         console.log(get().uploadFilesSelected)
         const formData = new FormData();
         get().uploadFilesSelected.forEach((fileObj, index) => {
-            formData.append('files', fileObj.file); // Append actual File object
+            formData.append('files', fileObj.file);
             formData.append("fileTypes[]", fileObj.type);
         });
         const response = await axiosInstance.post("/auth/upload/files", formData , {headers: {

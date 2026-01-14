@@ -171,7 +171,7 @@ const ChatContainer = ({ playSound }) => {
         String(msg.sender_id) !== String(selectedFriend._id) &&
         String(msg.receiver_id) !== String(selectedFriend._id)
       ) {
-        addNewMessage(msg.sender_id, msg.text);
+        addNewMessage(msg);
         playSound();
         return;
       }
@@ -182,7 +182,7 @@ const ChatContainer = ({ playSound }) => {
       addMessage(msg);
 
       if (!wasNearBottom) {
-        addNewMessage(msg.sender_id, msg.text);
+        addNewMessage(msg);
         setUnreadCount((p) => p + 1)
       };
 

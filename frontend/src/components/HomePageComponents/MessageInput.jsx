@@ -450,7 +450,7 @@ const MessageInput = () => {
                   height: "auto",
                   transition: {
                     duration: 0.35,
-                    ease: [0.25, 0.1, 0.25, 1], // smooth cubic-bezier easing
+                    ease: [0.25, 0.1, 0.25, 1],
                   },
                 }}
                 exit={{

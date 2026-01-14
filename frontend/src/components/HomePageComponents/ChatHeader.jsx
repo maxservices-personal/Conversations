@@ -7,6 +7,8 @@ import { useUIStore } from "../../store/useUIStore";
 import { motion } from "framer-motion";
 import { useMessageStore } from "../../store/useMessagestore";
 import { socket } from "../../lib/socket";
+import UserAvatar from "../SidebarComponents/addons/UserAvatar";
+import Handle from "../SidebarComponents/addons/Handle";
 
 
 const formatDate = (dateString) => {
@@ -80,19 +82,7 @@ const ChatHeader = () => {
           <button onClick={() => setSelectedFriend(null)} className="p-1 ml-1 mr-1 hover:text-[#000000] text-[#545454]">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
           </button>
-          <div className="w-14 h-14 relative rounded-full flex items-center justify-center bg-white border border-token-border-medium">
-            {selectedFriend?.profilePic ? (
-              <img
-                src={selectedFriend?.profilePic}
-                alt="profilepic"
-                className="rounded-full w-full h-full object-cover"
-              />
-            ) : (
-              <div className="text-[#444444]">
-                <User strokeWidth={2.1} />
-              </div>
-            )}
-          </div>
+          <UserAvatar user={selectedFriend} />
           <div className="ml-2">
             <span className="block text-[#141414] text-[20px] font-bold leading-7 ">
               {selectedFriend.name}
@@ -102,9 +92,7 @@ const ChatHeader = () => {
                 {isFriendTyping ? "Typing..." : getStatusText(selectedFriend)}
               </span>
             ) : (
-              <span className="block font-semibold text-[14px] text-[#8f8f8f]">
-                @{selectedFriend.username}
-              </span>
+              <Handle handle={selectedFriend.username} />
             )}
           </div>
         </div>

@@ -93,7 +93,7 @@ const LoginPage = () => {
 
             <button
               type="submit"
-              className="bg-[#161616] border-2 border-[#5858585e] w-full px-3 py-3 rounded-lg disabled:bg-[#e4e4e4] text-[#fdfdfd]"
+              className="bg-accent-100 border-2 border-[#5858585e] w-full px-3 py-3 rounded-lg disabled:bg-[#e4e4e4] text-[#fdfdfd]"
               disabled={isLoggingIn}
             >
               {isLoggingIn ? (

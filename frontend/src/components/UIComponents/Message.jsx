@@ -94,7 +94,7 @@ const Message = forwardRef(({ message, fromSender, index, onScrollTo }, ref) => 
       )}
 
       <div
-        className={`${fromSender ? " text-[var(--token-primary-text)] bg-[var(--token-user-selected)] mr-4 md:mr-10" : "bg-token-base-200 ml-4 md:ml-10"} shadow-md ${isEmojiOnly(message.text) && !message.reply?.text && "bg-[transparent!important] shadow-none"} inside-msg ${message.reply?.text ? "p-1" : "p-2 px-4"} whitespace-pre-wrap overflow-hidden max-w-[70%] rounded-3xl `}
+        className={`${fromSender ? " text-text-primary bg-accent-100/10 mr-4 md:mr-10" : "bg-base-200 ml-4 md:ml-10"} ${isEmojiOnly(message.text) && !message.reply?.text && "bg-[transparent!important] shadow-none"} inside-msg ${message.reply?.text ? "p-1" : "p-2 px-4"} whitespace-pre-wrap overflow-hidden max-w-[70%] rounded-3xl `}
       >
         {message.reply?.text && (
           <div
