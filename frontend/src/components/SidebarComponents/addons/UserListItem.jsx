@@ -37,11 +37,14 @@ const UserListItem = ({ user, index }) => {
         <div className="flex items-center justify-between">
           <span className="font-bold text-text-primary ">{user.name}</span>
         </div>
-        {getNewMessage(user._id) != "" ? (
-            <span className="text-sm text-tertiary">{getNewMessage(user._id)}</span>
-        ) : (
-            <Handle handle={user.username} />
-        )}
+        <span className="flex items-center justify-between">            
+            {getNewMessage(user._id) != "" ? (
+                <span className="text-sm text-tertiary">{getNewMessage(user._id)}</span>
+            ) : (
+                <Handle handle={user.username} />
+            )}
+            {getNewMessageCount(user._id) != 0 && (<span className="p-1 bg-accent-100/20 text-accent-100 rounded-full">{getNewMessageCount(user._id)}</span>)}
+        </span>
       </div>
     </div>
   );

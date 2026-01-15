@@ -12,17 +12,20 @@ export const useAuthStore = create((set) => ({
   isGettingUsers: false,
   friend_requests: [],
 
+  setUsers: (value)=> {
+    set({ users: value })
+  },
+
   getFriendRequests: async () => {
     try {
-      set({isGettingUsers: true})
-      const response = await axiosInstance.post("/auth/get/friend_requests")
-      set({ friend_requests: response.data.data })
-      console.log(response.data.data)
-      set({isGettingUsers: false})
+      set({ isGettingUsers: true });
+      const response = await axiosInstance.post("/get/friend_requests");
+      set({ friend_requests: response.data.data });
+      console.log(response.data.data);
+      set({ isGettingUsers: false });
     } catch (error) {
-      toast.error("Friend requests cannot be found.")
-      set({isGettingUsers: false})
-
+      toast.error("Friend requests cannot be found.");
+      set({ isGettingUsers: false });
     }
   },
 
@@ -40,18 +43,17 @@ export const useAuthStore = create((set) => ({
   },
   friends: [],
   isGettingFriends: false,
-  getFriends: async ()=>{
+  getFriends: async () => {
     try {
-      set({isGettingFriends: true})
-      const response = await axiosInstance.post("/auth/get/friends")
-      console.log(response)
-      set({ friends: response.data.friend_list })
-      set({isGettingFriends: false})
-
+      set({ isGettingFriends: true });
+      const response = await axiosInstance.post("/get/friends");
+      console.log(response);
+      set({ friends: response.data.friend_list });
+      set({ isGettingFriends: false });
     } catch (error) {
-      set({isGettingFriends: false})
-      console.log(error)
-      toast.error("error while getting friends")
+      set({ isGettingFriends: false });
+      console.log(error);
+      toast.error("error while getting friends");
     }
   },
 

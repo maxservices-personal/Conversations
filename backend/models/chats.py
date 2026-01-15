@@ -1,0 +1,4 @@
+
+
+class ChatsModel:
+    pass

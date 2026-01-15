@@ -16,7 +16,7 @@ const Sidebar = () => {
         explore: false
     });
 
-    const { getFriends, authUser, setActiveUsers } = useAuthStore();
+    const { getFriends, authUser, setActiveUsers, setUsers } = useAuthStore();
 
 
     useEffect(()=>{
@@ -51,13 +51,31 @@ const Sidebar = () => {
         }, []);
 
     useEffect(() => {
-        socket.on("active_users", (list) => setActiveUsers(list));
+    const handleActiveUsers = ({ active_users }) => {
+        console.log("Active users:", active_users);
+        setActiveUsers(active_users);
+    };
 
-        return () => {
-            socket.off("active_users");
-        };
-    }, []);
-    
+    const handleLastSeenUpdate = ({ user_id, last_seen }) => {
+        console.log("Last seen update:", user_id, last_seen);
+
+        setUsers(prevUsers =>
+            prevUsers.map(user =>
+                String(user._id) === user_id
+                    ? { ...user, last_seen }
+                    : user
+            )
+        );
+    };
+
+    socket.on("active_users", handleActiveUsers);
+    socket.on("last_seen_update", handleLastSeenUpdate);
+
+    return () => {
+        socket.off("active_users", handleActiveUsers);
+        socket.off("last_seen_update", handleLastSeenUpdate);
+    };
+}, [socket]);
 
 
 
@@ -84,7 +102,7 @@ const Sidebar = () => {
                         if (tabActive.explore) setTabActive({chats: true, explore: false});
                         else setTabActive({chats: false, explore: true});
                     }} 
-                    className={`p-2 transition-all flex items-center font-semibold gap-2 justify-center flex-1 py-3 text-text-secondary hover:text-accent-100 border-b-[1.5px] ${tabActive.chats ? 'bg-accent-100/8 text-accent-100 border-accent-100' : 'border-transparent'}`}>
+                    className={`p-2 transition-all flex items-center font-semibold gap-2 justify-center flex-1 py-3 hover:text-accent-100 border-b-[1.5px] ${tabActive.chats ? 'bg-accent-100/8 text-accent-100 border-accent-100' : 'border-transparent text-text-secondary '}`}>
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="m580-512-60-34v-68l60-34 60 34v68l-60 34Zm0 92 140-80v-160l-140-80-140 80v160l140 80Zm-72 220h224q-7 26-24 42t-44 20L228-85q-33 5-59.5-15.5T138-154L85-591q-4-33 16-59t53-30l46-6v80l-36 5 54 437 290-36Zm-148-80q-33 0-56.5-23.5T280-360v-440q0-33 23.5-56.5T360-880h440q33 0 56.5 23.5T880-800v440q0 33-23.5 56.5T800-280H360Zm0-80h440v-440H360v440Zm220-220ZM218-164Z"/></svg>
                     <span>Chats</span>
                 </button>
@@ -93,7 +111,7 @@ const Sidebar = () => {
                         if (tabActive.chats) setTabActive({chats: false, explore: true});
                         else setTabActive({chats: true, explore: false});
                     }} 
-                    className={`p-2 flex transition-all items-center justify-center font-semibold flex-1 gap-2 py-3 text-text-secondary hover:text-accent-100 border-b-[1.5px] ${tabActive.explore ? 'bg-accent-100/8 text-accent-100 border-accent-100' : 'border-transparent'}`}
+                    className={`p-2 flex transition-all items-center justify-center font-semibold flex-1 gap-2 py-3 hover:text-accent-100 border-b-[1.5px] ${tabActive.explore ? 'bg-accent-100/8 text-accent-100 border-accent-100' : 'border-transparent text-text-secondary '}`}
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="m300-300 280-80 80-280-280 80-80 280Zm180-120q-25 0-42.5-17.5T420-480q0-25 17.5-42.5T480-540q25 0 42.5 17.5T540-480q0 25-17.5 42.5T480-420Zm0 340q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Zm0-320Z"/></svg>
                     <span>Explore</span>

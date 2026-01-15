@@ -27,7 +27,15 @@ const formatDate = (dateString) => {
     msgDate.getMonth() === yesterday.getMonth() &&
     msgDate.getFullYear() === yesterday.getFullYear();
 
-  if (isToday) return "Today";
+  const formatTo12Hour = () => {
+    const hours = msgDate.getHours();
+    const mins = msgDate.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 || 12;
+    return `${formattedHours}:${mins.toString().padStart(2, '0')} ${ampm}`;
+  }
+
+  if (isToday) return "Today, " + formatTo12Hour();
   if (isYesterday) return "Yesterday";
   return msgDate.toLocaleDateString("en-US", {
     day: "numeric",
@@ -67,6 +75,7 @@ const ChatHeader = () => {
     if (isActive) {
       return "Currently Active";
     }
+    
     if (friend.last_seen) {
       return `Last seen ${formatDate(friend.last_seen)}`;
     }

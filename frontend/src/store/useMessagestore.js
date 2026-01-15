@@ -14,7 +14,7 @@ export const useMessageStore = create((set, get) => ({
   getMessages: async (receiver_id) => {
     try {
       set({ isGettingMessages: true });
-      const response = await axiosInstance.post("/auth/get/messages", {
+      const response = await axiosInstance.post("/get/messages", {
         receiver_id: receiver_id,
       });
       console.log(response.data);
@@ -26,7 +26,6 @@ export const useMessageStore = create((set, get) => ({
       set({ isGettingMessages: false });
     }
   },
-
   sendMessage: async (sender_id, receiver_id, text, replyyData, timestamp) => {
     try {
       const id = `msg-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
