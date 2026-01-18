@@ -24,7 +24,9 @@ class UserModel:
             "isSetUp": kwargs.get("isSetUp", False),
             "phone_number": kwargs.get("phone_number", None),
             "bio": kwargs.get("bio", ""),
-            "last_seen": None
+            "last_seen": None,
+            "followers": 0,
+            "following": 0
         }
         
         result = self.collection.insert_one(user_data)
@@ -70,3 +72,6 @@ class UserModel:
     def get_all_users(self):
         """Get all users"""
         return list(self.collection.find({}, {"password": 0}))
+
+    def get_user_by_handle(self, handle):
+        return self.collection.find_one({"username": handle})

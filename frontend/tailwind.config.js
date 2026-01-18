@@ -7,35 +7,35 @@ export default {
   theme: {
     extend: {
       colors: {
-         base: {
-          100: "hsl(212, 20%, 92%)",
-          200: "hsl(212, 18%, 88%)",
-          300: "hsl(212, 20%, 76%)",
+        base: {
+          100: "hsl(var(--h-base) 20% 92% / <alpha-value>)",
+          200: "hsl(var(--h-base) 18% 88% / <alpha-value>)",
+          300: "hsl(var(--h-base) 20% 76% / <alpha-value>)",
         },
 
         accent: {
-          100: "hsl(208, 48%, 47%)",
-          200: "hsl(208, 58%, 37%)",
-          300: "hsl(208, 68%, 27%)",
+          100: "hsl(var(--h-accent) 48% 47% / <alpha-value>)",
+          200: "hsl(var(--h-accent) 58% 37% / <alpha-value>)",
+          300: "hsl(var(--h-accent) 68% 27% / <alpha-value>)",
         },
 
         text: {
-          primary: "hsl(212, 20%, 12%)",
-          secondary: "hsl(212, 20%, 32%)",
-          tertiary: "hsl(212, 20%, 52%)",
+          primary: "hsl(var(--h-base) 20% 12% / <alpha-value>)",
+          secondary: "hsl(var(--h-base) 20% 32% / <alpha-value>)",
+          tertiary: "hsl(var(--h-base) 20% 52% / <alpha-value>)",
         },
 
         border: {
-          100: "hsl(212, 20%, 72%)",
-          200: "hsl(212, 20%, 62%)",
-          300: "hsl(212, 20%, 52%)",
+          100: "hsl(var(--h-base) 20% 72% / <alpha-value>)",
+          200: "hsl(var(--h-base) 20% 62% / <alpha-value>)",
+          300: "hsl(var(--h-base) 20% 52% / <alpha-value>)",
         },
 
         status: {
-          success: "hsl(145, 55%, 45%)",
-          error: "hsl(0, 70%, 50%)",
-          warning: "hsl(38, 90%, 55%)",
-          info: "hsl(208, 48%, 47%)",
+          success: "hsl(145 55% 45% / <alpha-value>)",
+          error: "hsl(0 70% 50% / <alpha-value>)",
+          warning: "hsl(38 90% 55% / <alpha-value>)",
+          info: "hsl(var(--h-accent) 48% 47% / <alpha-value>)",
         },
       },
       fontFamily: {

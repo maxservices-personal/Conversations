@@ -3,6 +3,7 @@ import { useAuthStore } from '../../store/useAuthStore';
 import { Loader } from 'lucide-react';
 import UserListItem from './addons/UserListItem';
 import {Filters} from '../../lib/filters';
+import Logo from './addons/Logo';
 
 const ChatsSideBarSection = () => {
     const {
@@ -32,6 +33,13 @@ const ChatsSideBarSection = () => {
                 <div className={`p-1 px-2 cursor-pointer hover:bg-accent-100/10 hover:text-accent-100 text-sm text-text-secondary border border-border-100 rounded-3xl ${filter.active ? "bg-accent-100/20 text-accent-100" : "bg-base-100"}`}>{filter.text}</div>
             ))}
         </div>
+        {
+            friends.length === 0 && (
+        <div className='w-full h-[42vh] px-10 flex items-center justify-center flex-col gap-2'>
+            <span className='text-text-secondary'><Logo width={32} height={32} /></span>
+            <span className='text-text-secondary text-center text-sm font-semibold'>You have no friends added, start finding them!</span>
+        </div>
+        )}
         {friends.map((user, index)=><UserListItem index={index} user={user} />)}
     </div>
   )

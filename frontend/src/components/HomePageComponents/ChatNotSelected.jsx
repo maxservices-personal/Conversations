@@ -3,9 +3,9 @@ import SingleTypeButton from '../UIComponents/SingleTypeButton'
 import { useUIStore } from '../../store/useUIStore'
 
 const ChatNotSelected = () => {
-    const {toggleSidebar} = useUIStore();
+    const {toggleSidebar, isSidebarMinimized} = useUIStore();
   return (
-    <div className='flex relative md:static items-center justify-center h-full w-full md:w-[calc(100%-320px)]'>
+    <div className={`flex relative md:static items-center justify-center h-full w-full transition-all duration-700 ${isSidebarMinimized ? "md:w-[calc(100%-70px)]" : "md:w-[calc(100%-320px)]"}`}>
         <div className="absolute top-0 px-4 left-0 flex items-center justify-between w-full h-[64px] bg-[#ffffff34] backdrop-blur-md z-10 border-b border-token-border-light md:hidden">
             <span className='text-[hsl(208,48%,44%)] flex items-center gap-2'><svg
               xmlns="http://www.w3.org/2000/svg"

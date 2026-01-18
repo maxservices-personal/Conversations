@@ -12,6 +12,18 @@ user_model = UserModel()
 friend_model = FriendModel()
 notification_model = NotificationModel()
 
+@friends_bp.route("/get/user_details", methods=["POST"])
+def get_user_details():
+    data = request.json
+    handle = data.get("handle", None)
+    if not handle:
+        return jsonify({"error": "Handle is required"}), 400
+    
+    user = user_model.get_user_by_handle(handle)
+    if not user:
+        return jsonify({"error": "User doesn't exist"}), 404
+    
+    return jsonify({"user":serialize_data(user)})
 
 @friends_bp.route("/get/friends", methods=["POST"])
 @token_required

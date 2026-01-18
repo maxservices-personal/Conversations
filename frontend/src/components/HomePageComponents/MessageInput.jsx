@@ -676,7 +676,7 @@ const MessageInput = () => {
             <button
               disabled={!uploadedFiles?.length != 0 ? isEmpty : uploading}
               onClick={() => handleSendMessage()}
-              className="p-2 border-token-border-medium rounded-full bg-token-primary disabled:bg-[#c0bdbd] disabled:hover:scale-100 active:scale-90 disabled:active:scale-100 transition-colors text-white disabled:opacity-80 hover:scale-105"
+              className="p-2 border-token-border-medium rounded-full bg-accent-100 disabled:bg-[#c0bdbd] disabled:hover:scale-100 active:scale-90 disabled:active:scale-100 transition-colors text-white disabled:opacity-80 hover:scale-105"
             >
               {uploading ? (
                 <Loader2 className="animate-spin" />

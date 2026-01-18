@@ -1,4 +1,6 @@
 :root {
+    --h-base: 212;
+    --h-accent: 208;
     --base-100: hsl(212, 20%, 92%);
     --base-200: hsl(212, 20%, 84%);
     --base-300: hsl(212, 20%, 76%);
@@ -17,4 +19,27 @@
 
     --status-success: hsl(145, 55%, 45%);
     --status-error: hsl(0, 70%, 50%);
+}
+
+
+[data-theme="pink"] {
+  --h-base: 335;
+  --h-accent: 345;
+}
+
+[data-theme="dark"] {
+  --h-base: 212;
+  --h-accent: 208;
+
+  --base-100: hsl(212 20% 12%);
+  --base-200: hsl(212 18% 16%);
+  --base-300: hsl(212 20% 22%);
+
+  --text-primary: hsl(212 20% 92%);
+  --text-secondary: hsl(212 20% 72%);
+  --text-tertiary: hsl(212 20% 52%);
+
+  --border-100: hsl(212 20% 32%);
+  --border-200: hsl(212 20% 26%);
+  --border-300: hsl(212 20% 20%);
 }

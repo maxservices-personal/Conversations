@@ -4,8 +4,8 @@
   --token-base-300: #eeeeee;
 
   --token-base-200-blured: #f7f7f780;
-  --bg-gradient-blured: #ffffffe5, #ffffffd8, transparent;
-  --bg-gradient-blured-2: #ffffffd2, transparent;
+  --bg-gradient-blured: var(--base-200), transparent;
+  --bg-gradient-blured-2: var(--base-200), transparent;
 
   --token-border-medium: hsla(0, 0%, 37%, 0.15);
   --token-border-light: hsla(0, 0%, 43%, 0.1);
@@ -28,7 +28,7 @@
 
   --token-loader-gradient-2:#353535, #353535, #353535,#353535, #353535,#f5f5f5,#353535, #353535, #353535, #353535;
 }
-
+/* 
 [data-theme="dark"] {
   --token-base-100: #070707;
   --token-base-200: #202020;
@@ -59,7 +59,7 @@
 
   
 }
-
+ */
 
 /* * {
   text-shadow: 1px 1px 13px #2727273b;;
