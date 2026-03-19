@@ -1,4 +1,4 @@
-# <div style="display:flex;align-items:center"><img src="./frontend/public/logo.svg" alt="Conversations - Under Development" width="40" height="40" style="margin-right:10px;"> Conversations - Under Development </div>
+<div style="display:flex;align-items:center"><img src="./frontend/public/logo.svg" alt="Conversations - Under Development" width="40" height="40" style="margin-right:10px;"> <span style="font-weight:bold;font-size:30px;">Conversations - Under Development </span></div>
 
 ![homepage](./images/image-home.jpeg)
 

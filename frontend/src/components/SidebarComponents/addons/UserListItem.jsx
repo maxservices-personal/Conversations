@@ -35,11 +35,11 @@ const UserListItem = ({ user, index }) => {
       <UserAvatar user={user} />
       <div className="flex flex-col gap-1">
         <div className="flex items-center justify-between">
-          <span className="font-bold text-text-primary ">{user.name}</span>
+          <span className="font-bold text-text-primary text-nowrap">{user.name}</span>
         </div>
         <span className="flex items-center justify-between">            
             {getNewMessage(user._id) != "" ? (
-                <span className="text-sm text-tertiary">{getNewMessage(user._id)}</span>
+                <span className="text-sm text-nowrap text-tertiary">{getNewMessage(user._id)}</span>
             ) : (
                 <Handle handle={user.username} />
             )}

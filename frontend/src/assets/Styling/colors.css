@@ -19,27 +19,91 @@
 
     --status-success: hsl(145, 55%, 45%);
     --status-error: hsl(0, 70%, 50%);
+
+    --l-base-100: 92%;
+    --l-base-200: 88%;
+    --l-base-300: 76%;
+
+    --l-accent-100: 47%;
+    --l-accent-200: 37%;
+    --l-accent-300: 27%;
+
+    --l-text-primary: 12%;
+    --l-text-secondary: 32%;
+    --l-text-tertiary: 52%;
+
+    --l-border-100: 72%;
+    --l-border-200: 62%;
+    --l-border-300: 52%;
+
+    --s-accent-100: 48%;
+    --s-accent-200: 58%;
+    --s-accent-300: 68%;
 }
 
 
 [data-theme="pink"] {
   --h-base: 335;
   --h-accent: 345;
+
+
+  --l-base-100: 92%;
+  --l-base-200: 88%;
+  --l-base-300: 76%;
+
+  --l-text-primary: 12%;
+  --l-text-secondary: 32%;
+  --l-text-tertiary: 52%;
+
+  --l-border-100: 72%;
+  --l-border-200: 62%;
+  --l-border-300: 52%;
 }
 
 [data-theme="dark"] {
-  --h-base: 212;
-  --h-accent: 208;
+  --l-base-100: 10%;
+  --l-base-200: 14%;
+  --l-base-300: 22%;
 
-  --base-100: hsl(212 20% 12%);
-  --base-200: hsl(212 18% 16%);
-  --base-300: hsl(212 20% 22%);
+  --l-text-primary: 92%;
+  --l-text-secondary: 79%;
+  --l-text-tertiary: 59%;
 
-  --text-primary: hsl(212 20% 92%);
-  --text-secondary: hsl(212 20% 72%);
-  --text-tertiary: hsl(212 20% 52%);
+  --l-border-100: 40%;
+  --l-border-200: 50%;
+  --l-border-300: 60%;
 
-  --border-100: hsl(212 20% 32%);
-  --border-200: hsl(212 20% 26%);
-  --border-300: hsl(212 20% 20%);
+  --l-accent-100: 77%;
+  --l-accent-200: 67%;
+  --l-accent-300: 57%;
+
+  --s-accent-100: 38%;
+  --s-accent-200: 48%;
+  --s-accent-300: 58%;
+}
+
+[data-theme="pink-dark"] {
+  --h-base: 335;
+  --h-accent: 345;
+
+  --l-base-100: 10%;
+  --l-base-200: 14%;
+  --l-base-300: 22%;
+
+  --l-text-primary: 92%;
+  --l-text-secondary: 79%;
+  --l-text-tertiary: 59%;
+
+  --l-border-100: 40%;
+  --l-border-200: 50%;
+  --l-border-300: 60%;
+
+  --l-accent-100: 77%;
+  --l-accent-200: 67%;
+  --l-accent-300: 57%;
+
+  --s-accent-100: 38%;
+  --s-accent-200: 48%;
+  --s-accent-300: 58%;
+
 }

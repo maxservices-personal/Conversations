@@ -39,7 +39,7 @@ const App = () => {
   if (isCheckingAuth)
     return (
       <div
-        data-theme="dark"
+        data-theme={theme}
         className="flex items-center justify-center bg-base-100 w-full h-screen text-accent-100"
       >
         <svg

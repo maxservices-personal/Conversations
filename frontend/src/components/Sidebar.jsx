@@ -19,7 +19,7 @@ const Sidebar = () => {
     });
 
     const { getFriends, authUser, setActiveUsers, setUsers } = useAuthStore();
-    const { isSidebarMinimized, toggleIsSidebarMinimized, setIsExploreTab } = useUIStore();
+    const { isSidebarMinimized, toggleIsSidebarMinimized, setIsExploreTab, theme } = useUIStore();
 
 
     useEffect(()=>{
@@ -86,7 +86,7 @@ const Sidebar = () => {
     <div ref={sidebarRef} className={`h-full relative overflow-x-hidden scrollbar-track-hidden z-20 overflow-auto max-sm:absolute flex flex-col bg-base-200  border-r border-border-100 transition-all duration-700 ${isSidebarMinimized ? 'w-[70px]' : 'w-[320px]'}`}>
         <div className={`fixed w-[320px] z-[100] top-0 ${isScrolled && "bg-base-100"} transition-all`}>
             <div className="w-full flex p-3 pt-3 pb-2 items-center gap-1">
-                <span className="text-[hsl(208,48%,44%)] mb-[5px]">
+                <span className={`${theme === "dark" ? "text-[hsl(208,54%,53%)]" : "text-[hsl(208,48%,44%)]"} mb-[5px]`}>
                     <Logo />
                 </span>
                 {
@@ -185,7 +185,7 @@ const Sidebar = () => {
         }
 
         <div className={`flex absolute hover:bg-base-100 transition-colors bottom-0 gap-2 items-center ${isSidebarMinimized ? "pl" : "border-t border-border-100 w-full"} p-3`}>
-            <UserAvatar user={authUser} extra_class={` transition-all w-[45px] h-[45px] shadow-md`} />
+            <UserAvatar user={authUser} extra_class={` transition-all min-w-[45px!important] min-h-[45px!important] max-w-[45px!important] max-h-[45px!important] shadow-md`} />
             {
                 !isSidebarMinimized && (
                     

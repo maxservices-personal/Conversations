@@ -5,7 +5,7 @@ import { axiosInstance } from "../lib/axios";
 export const useUIStore = create((set, get) => ({
     isSidebarOpen: true,
     toggleSidebar: () => set((state) => ({ isSidebarOpen: !state.isSidebarOpen })),
-    isSidebarMinimized: true,
+    isSidebarMinimized: false,
     toggleIsSidebarMinimized: (valv) => set({ isSidebarMinimized: valv }),
     isExploreTab: false,
     setIsExploreTab: (valv)=>set({ isExploreTab: valv }),
@@ -14,7 +14,7 @@ export const useUIStore = create((set, get) => ({
     isOnStandBy: false,
     toggleIsOnStandBy:  () => {set((state) => ({ isOnStandBy: !state.isOnStandBy }))},
 
-    theme: "light",
+    theme: "dark",
 
     isAddMoment: false,
     setIsAddMoment: (valv)=>set({ isAddMoment: valv }),
