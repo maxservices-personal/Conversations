@@ -55,6 +55,10 @@ def create_app():
         response.headers.add('Access-Control-Allow-Origin', 'http://localhost:5173')
         response.headers.add('Access-Control-Allow-Credentials', 'true')
         return response
+
+    @app.route("/health", methods=["GET"])
+    def health():
+        return jsonify({"status": "ok", "message": "Server is running"}), 200
     
     app.register_blueprint(auth_bp, url_prefix="/api/auth")
     app.register_blueprint(friends_bp, url_prefix="/api")

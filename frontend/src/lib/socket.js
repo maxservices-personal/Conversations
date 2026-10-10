@@ -1,4 +1,4 @@
 import { io } from "socket.io-client";
 
 
-export const socket = io("http://localhost:5001", { withCredentials: true });
+export const socket = io("https://conversations-bzqu.onrender.com", { withCredentials: true });
