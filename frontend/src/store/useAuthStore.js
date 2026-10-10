@@ -126,7 +126,6 @@ export const useAuthStore = create((set) => ({
         toast.error(error.response.data.error);
     } finally {
         set({ isLoggingIn: false });
-        window.location.reload();
     }
   },
   logout: async () => {
