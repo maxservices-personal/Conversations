@@ -14,7 +14,7 @@ export const useUIStore = create((set, get) => ({
     isOnStandBy: false,
     toggleIsOnStandBy:  () => {set((state) => ({ isOnStandBy: !state.isOnStandBy }))},
 
-    theme: "dark",
+    theme: "light",
 
     isAddMoment: false,
     setIsAddMoment: (valv)=>set({ isAddMoment: valv }),

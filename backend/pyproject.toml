@@ -1,0 +1,41 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Conversations backend API"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "bcrypt",
+    "bson>=0.5.10",
+    "cryptography",
+    "dotenv>=0.9.9",
+    "eventlet",
+    "flask",
+    "flask-cors",
+    "flask-socketio",
+    "google>=3.0.0",
+    "google-auth",
+    "jwt>=1.4.0",
+    "linkpreview",
+    "pillow",
+    "PyJWT",
+    "pymongo",
+    "python-dateutil",
+    "python-dotenv",
+    "uvicorn[standard]>=0.54.0",
+    "werkzeug>=3.1.9",
+]
+
+[project.scripts]
+app = "app:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["app", "config"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["database*", "middleware*", "models*", "routes*", "utils*", "web_sockets*"]

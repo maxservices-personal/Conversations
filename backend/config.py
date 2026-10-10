@@ -5,7 +5,7 @@ load_dotenv()
 
 class Config:
     """Application configuration"""
-    SECRET_KEY = os.getenv("SECRET_KEY_ETC")
+    SECRET_KEY = os.getenv("SECRET_KEY")
     GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
     MONGODB_URI = os.getenv("MONGODB_URI")
     MESSAGE_SECRET_KEY = os.getenv("MESSAGE_SECRET_KEY")

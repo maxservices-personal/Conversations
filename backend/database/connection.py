@@ -17,7 +17,7 @@ class Database:
         """Initialize database connection"""
         print("Connecting to MongoDB...")
         client = MongoClient(Config.MONGODB_URI)
-        self.db = client["MAXAI"]
+        self.db = client["huddle"]
         print(f"Connected to database: {self.db.name}")
     
     def get_collection(self, name):

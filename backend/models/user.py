@@ -7,7 +7,7 @@ class UserModel:
     
     def __init__(self):
         from database.connection import db_instance
-        self.collection = db_instance.get_collection("users2")
+        self.collection = db_instance.get_collection("users")
     
     def create_user(self, username, email, password, **kwargs):
         """Create a new user"""

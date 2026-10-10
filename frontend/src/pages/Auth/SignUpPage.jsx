@@ -119,7 +119,6 @@ z"
       </div>
       <div className="flex flex-col z-10 justify-center items-center p-6 sm:p-12">
         <div className="w-full max-w-xl rounded-xl p-5 min-w-96 space-y-8">
-          {/* Logo */}
           <div className="text-center mb-8">
             <div className="flex flex-col text-[#111111] items-center gap-1 group">
               <h1 className="text-[34px] leading-7 font-bold mt-2 text-[#333333]">

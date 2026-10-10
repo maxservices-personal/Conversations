@@ -49,6 +49,8 @@ const Sidebar = () => {
     };
   }, []);
 
+  console.log(friends)
+
 
 
   const [requestedUsers, setRequestedUsers] = useState([]);
@@ -142,7 +144,7 @@ const Sidebar = () => {
               </div>
             )}
           </div>
-            <div className="text-[#121212] font-semibold mt-3 ml-2">Moments</div>
+            {/* <div className="text-[#121212] font-semibold mt-3 ml-2">Moments</div>
             <div className="flex items-center gap-3 ml-2 mt-2 max-w-full w-full overflow-y-hidden overflow-auto">
               <div onClick={()=>setIsAddMoment(!isAddMoment)} className="cursor-pointer rounded-full p-0.5 ">
                 <div className="w-14 h-14  relative bg-token-base-200 rounded-full flex items-center justify-center border-2 border-token-border-medium">
@@ -158,7 +160,7 @@ const Sidebar = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
           {!isFindUsers ? (
             <>
@@ -189,8 +191,8 @@ const Sidebar = () => {
                     <path d="M554-120q-54 0-91-37t-37-89q0-76 61.5-137.5T641-460q-3-36-18-54.5T582-533q-30 0-65 25t-83 82q-78 93-114.5 121T241-277q-51 0-86-38t-35-92q0-54 23.5-110.5T223-653q19-26 28-44t9-29q0-7-2.5-10.5T250-740q-10 0-25 12.5T190-689l-70-71q32-39 65-59.5t65-20.5q46 0 78 32t32 80q0 29-15 64t-50 84q-38 54-56.5 95T220-413q0 17 5.5 26.5T241-377q10 0 17.5-5.5T286-409q13-14 31-34.5t44-50.5q63-75 114-107t107-32q67 0 110 45t49 123h99v100h-99q-8 112-58.5 178.5T554-120Zm2-100q32 0 54-36.5T640-358q-46 11-80 43.5T526-250q0 14 8 22t22 8Z" />
                   </svg>
                 </div>
-              ) : friends.length != 0 ? (
-                friends.map((user, index) => {
+              ) : friends ? <div className=""></div> : friends?.length != 0 ? (
+                friends?.map((user, index) => {
                   const isActive = activeUsers.some(u => u.user_id === user._id);
 
                   
@@ -367,7 +369,7 @@ const Sidebar = () => {
                   {users.map((user) => {
                     if (user._id === authUser._id) return null;
 
-                    const isFriend = friends.some(
+                    const isFriend = friends?.some(
                       (friend) => friend._id === user._id
                     );
 
@@ -418,7 +420,7 @@ const Sidebar = () => {
                           ) : (
                             <button
                               onClick={() => handleFollow(user._id)}
-                              className="px-4 text-[14px] mr-2 ml-auto font-semibold py-2 rounded-3xl border border-token-border-medium bg-token-primary text-white hover:opacity-90 transition-all"
+                              className="px-4 text-[14px] mr-2 ml-auto font-semibold py-2 rounded-3xl border border-token-border-medium bg-accent-100 text-white hover:opacity-90 transition-all"
                             >
                               Add Friend
                             </button>
@@ -442,9 +444,9 @@ const Sidebar = () => {
                     <User size={20} />
                   </div>
                 )}
-                <div className="p-1 rounded-full bg-token-base-100 absolute bottom-0 right-0 border border-token-border-medium">
+                {/* <div className="p-1 rounded-full bg-token-base-100 absolute bottom-0 right-0 border border-token-border-medium">
                   <Plus size={12} />
-                </div>
+                </div> */}
               </div>
               <div className="flex flex-col items-start">
                 <span className="text-[15px] font-semibold">{authUser.name} <span className="text-[#4d4d4d]">(You)</span></span>

@@ -1,0 +1,37 @@
+Metadata-Version: 2.4
+Name: backend
+Version: 0.1.0
+Summary: Conversations backend API
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: bcrypt
+Requires-Dist: bson>=0.5.10
+Requires-Dist: cryptography
+Requires-Dist: dotenv>=0.9.9
+Requires-Dist: eventlet
+Requires-Dist: flask
+Requires-Dist: flask-cors
+Requires-Dist: flask-socketio
+Requires-Dist: google>=3.0.0
+Requires-Dist: google-auth
+Requires-Dist: jwt>=1.4.0
+Requires-Dist: linkpreview
+Requires-Dist: pillow
+Requires-Dist: PyJWT
+Requires-Dist: pymongo
+Requires-Dist: python-dateutil
+Requires-Dist: python-dotenv
+Requires-Dist: uvicorn[standard]>=0.54.0
+Requires-Dist: werkzeug>=3.1.9
+
+# Conversations backend
+
+This backend requires Python 3.10 and [uv](https://docs.astral.sh/uv/).
+
+```powershell
+uv sync
+uv run app
+```
+
+Set the required application configuration in a `.env` file before starting the
+server, including `MONGODB_URI` and a valid Fernet `MESSAGE_SECRET_KEY`.

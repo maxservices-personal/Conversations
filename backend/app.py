@@ -81,6 +81,11 @@ def create_app():
     
     return app, socketio
 
-if __name__ == "__main__":
+
+def main() -> None:
     app, socketio = create_app()
     socketio.run(app, host='0.0.0.0', port=5001, debug=True)
+
+
+if __name__ == "__main__":
+    main()

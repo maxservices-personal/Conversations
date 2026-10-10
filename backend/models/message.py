@@ -6,7 +6,7 @@ class MessageModel:
     
     def __init__(self):
         from database.connection import db_instance
-        self.collection = db_instance.get_collection("chat_messages")
+        self.collection = db_instance.get_collection("messages")
     
     def save_message(self, sender_id, receiver_id, encrypted_text, **kwargs):
         """Save a new message"""

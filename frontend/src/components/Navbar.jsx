@@ -17,7 +17,7 @@ const Navbar = () => {
             </span>
             <h1 className='text-[20px] font-semibold'>Conversations</h1>
             <div className="bg-black h-[30px] rounded-3xl w-[1px]  "></div>
-            <div className='text-[16px] text-[#2e2e2e]'>MAX Services</div>
+            <div className='text-[16px] text-[#2e2e2e]'>Elactice Group</div>
         </div>
     </div>
   )

@@ -5,7 +5,7 @@ import { useChatStore } from "../store/useChatStore";
 import { useMessageStore } from "../store/useMessagestore";
 import { socket } from "../lib/socket";
 import { useUIStore } from "../store/useUIStore";
-import SingleTpyeButton from "../components/UIComponents/SingleTypeButton"
+import SingleTpyeButton from "./UIComponents/SingleTypeButton"
 import Profile from "./UIComponents/Profile";
 import ChatsSideBarSection from "./SidebarComponents/ChatsSideBarSection";
 import ChatsSideBarExplore from "./SidebarComponents/ChatsSideBarExplore";

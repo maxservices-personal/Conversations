@@ -28,25 +28,33 @@ def get_user_details():
 @friends_bp.route("/get/friends", methods=["POST"])
 @token_required
 def get_friends():
-    """Get user's friend list"""
     user_data = request.user
-    
+
     friend_list = friend_model.get_friend_list(user_data["_id"])
-    
-    if not friend_list:
-        return jsonify({"friend_list": []})
-    
-    friend_ids = [f.get("user_id") for f in friend_list if f.get("user_id")]
-    
-    if not friend_ids:
-        return jsonify({"friend_list": []})
-    
+
+    friend_ids = [
+        f["user_id"]
+        for f in (friend_list or [])
+        if f.get("user_id")
+    ]
+
     from database.connection import db_instance
-    users_collection = db_instance.get_collection("users2")
-    friends = list(users_collection.find({"_id": {"$in": friend_ids}}, {"password": 0}))
-    
+
+    users_collection = db_instance.get_collection("users")
+
+    friends = list(
+        users_collection.find(
+            {"_id": {"$in": friend_ids}},
+            {"password": 0}
+        )
+    )
+
+    print("Friend relationship IDs:", friend_ids)
+    print("Fetched friend profiles:", len(friends))
+    print("Fetched profile IDs:", [str(f["_id"]) for f in friends])
+
     friends = [serialize_data(friend) for friend in friends]
-    
+
     return jsonify({"friend_list": friends})
 
 
@@ -107,8 +115,10 @@ def add_friend():
         )
     
     friend_list = friend_model.get_friend_list(user_data["_id"])
-    
-    return jsonify({"friend_users": friend_list})
+
+    return jsonify({
+        "friend_users": serialize_data(friend_list)
+    })
 
 
 @friends_bp.route("/friend-request", methods=["POST"])
@@ -138,7 +148,7 @@ def handle_friend_request():
         
         return jsonify({
             "message": "Friend request accepted",
-            "new_friend_list": friend_list
+            "new_friend_list": serialize_data(friend_list)
         })
     
     return jsonify({"message": "Friend request rejected"})

@@ -23,7 +23,6 @@ const LoginPage = () => {
     <div className="h-screen flex items-center bg-[#ffffff] justify-center relative">
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <div className="flex justify-center gap-2 text-[#111111] mt-4 items-center">
-         
           <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="50"
@@ -37,7 +36,6 @@ const LoginPage = () => {
       </div>
       <div className="flex flex-col z-10 justify-center items-center p-6 sm:p-12">
         <div className="w-full max-w-xl rounded-xl p-5 min-w-96 space-y-8">
-          {/* Logo */}
           <div className="text-center mb-8">
             <div className="flex flex-col text-[#111111] items-center gap-1 group">
               <h1 className="text-[34px] leading-7 font-bold mt-2 text-[#333333]">
@@ -46,7 +44,6 @@ const LoginPage = () => {
             </div>
           </div>
 
-          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="form-control">
               <div className="relative w-full mt-6">
