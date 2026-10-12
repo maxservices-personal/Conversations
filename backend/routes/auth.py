@@ -16,176 +16,198 @@ auth_bp = Blueprint("auth", __name__)
 user_model = UserModel()
 
 
+def create_auth_token(user_id):
+    """Generate a JWT with a JSON-serializable user ID."""
+    return jwt.encode(
+        {
+            "user_id": str(user_id),
+            "exp": datetime.now(timezone.utc)
+            + relativedelta(months=Config.JWT_EXPIRATION_MONTHS),
+        },
+        Config.SECRET_KEY,
+        algorithm=Config.JWT_ALGORITHM,
+    )
+
+
+def set_auth_cookie(response, token):
+    """Set the authentication cookie consistently across all auth routes."""
+    response.set_cookie(
+        key="access_token",
+        value=token,
+        httponly=True,
+        secure=True,
+        samesite="None",
+        max_age=Config.COOKIE_MAX_AGE,
+        path="/",
+    )
+    return response
+
+
+def clear_auth_cookie(response):
+    """Clear the authentication cookie using matching attributes."""
+    response.delete_cookie(
+        key="access_token",
+        path="/",
+        secure=True,
+        httponly=True,
+        samesite="None",
+    )
+    return response
+
+
 @auth_bp.route("/google", methods=["POST"])
 def google_oauth():
-    """Handle Google OAuth authentication"""
-    token = request.json.get("token")
-    
-    if not token:
+    """Handle Google OAuth authentication."""
+    data = request.get_json(silent=True) or {}
+    google_token = data.get("token")
+
+    if not google_token:
         return jsonify({"error": "No token provided"}), 400
-    
+
     try:
         idinfo = id_token.verify_oauth2_token(
-            token, grequests.Request(), Config.GOOGLE_CLIENT_ID
+            google_token,
+            grequests.Request(),
+            Config.GOOGLE_CLIENT_ID,
         )
-        
+
+        if not idinfo.get("email_verified"):
+            return jsonify({"error": "Google email is not verified"}), 401
+
         email = idinfo["email"]
-        name = idinfo["name"]
-        
+        name = idinfo.get("name", email.split("@")[0])
+
         user = user_model.find_by_email(email)
-        
+
         if not user:
             user_data = user_model.create_user(
                 username=name,
                 email=email,
                 password="identified by google",
-                profilePic=idinfo.get("picture", "")
+                profilePic=idinfo.get("picture", ""),
             )
-            
-            jwt_token = jwt.encode(
-                {
-                    "user_id": user_data["_id"],
-                    "exp": datetime.now(timezone.utc) + relativedelta(months=Config.JWT_EXPIRATION_MONTHS)
-                },
-                Config.SECRET_KEY,
-                algorithm=Config.JWT_ALGORITHM
-            )
-            
-            response = make_response(
-                jsonify({"message": "User created successfully", "user": user_data}), 201
-            )
+
+            user_id = user_data["_id"]
+            response_data = {
+                "message": "User created successfully",
+                "user": serialize_data(user_data),
+            }
+            status_code = 201
+
         else:
-            jwt_token = jwt.encode(
-                {
-                    "user_id": str(user["_id"]),
-                    "exp": datetime.now(timezone.utc) + relativedelta(months=Config.JWT_EXPIRATION_MONTHS)
+            user_id = user["_id"]
+            response_data = {
+                "message": "Login successful",
+                "user": {
+                    "name": user.get("fullName", user["username"]),
+                    "email": user["email"],
                 },
-                Config.SECRET_KEY,
-                algorithm=Config.JWT_ALGORITHM
-            )
-            
-            response = make_response(
-                jsonify({
-                    "message": "Login successful",
-                    "user": {"name": user["username"], "email": user["email"]}
-                }), 200
-            )
-        
-        response.set_cookie(
-            "access_token",
-            jwt_token,
-            httponly=Config.COOKIE_HTTPONLY,
-            secure=Config.COOKIE_SECURE,
-            max_age=Config.COOKIE_MAX_AGE,
-            samesite=Config.COOKIE_SAMESITE
+            }
+            status_code = 200
+
+        jwt_token = create_auth_token(user_id)
+
+        response = make_response(
+            jsonify(response_data),
+            status_code,
         )
-        
-        return response
-        
-    except Exception as e:
-        print(e)
-        return jsonify({"error": str(e)}), 400
+        return set_auth_cookie(response, jwt_token)
+
+    except Exception:
+        auth_bp.logger.exception("Google OAuth authentication failed")
+        return jsonify({"error": "Google authentication failed"}), 400
 
 
 @auth_bp.route("/signup", methods=["POST"])
 def signup():
-    """Handle user registration"""
-    data = request.json
-    
-    if not data.get("username") or not data.get("email") or not data.get("password"):
-        return jsonify({"message": "Name, password and email are required"}), 400
-    
-    if len(data.get("password")) < 6:
-        return jsonify({"message": "Password should be at least 6 characters long"}), 400
-    
-    if user_model.find_by_email(data["email"]):
-        return jsonify({"message": "User with this email already exists"}), 400
-    
-    if user_model.find_by_username(data["username"]):
-        return jsonify({"message": "User with this username already exists"}), 400
-    
+    """Handle user registration."""
+    data = request.get_json(silent=True) or {}
+
+    username = data.get("username")
+    email = data.get("email")
+    password = data.get("password")
+
+    if not all([username, email, password]):
+        return jsonify({
+            "message": "Username, password and email are required"
+        }), 400
+
+    if not isinstance(password, str) or len(password) < 6:
+        return jsonify({
+            "message": "Password should be at least 6 characters long"
+        }), 400
+
+    if user_model.find_by_email(email):
+        return jsonify({
+            "message": "User with this email already exists"
+        }), 409
+
+    if user_model.find_by_username(username):
+        return jsonify({
+            "message": "User with this username already exists"
+        }), 409
+
     user_data = user_model.create_user(
-        username=data["username"],
-        email=data["email"],
-        password=data["password"]
+        username=username,
+        email=email,
+        password=password,
     )
-    
-    jwt_token = jwt.encode(
-        {
-            "user_id": user_data["_id"],
-            "exp": datetime.now(timezone.utc) + relativedelta(months=Config.JWT_EXPIRATION_MONTHS)
-        },
-        Config.SECRET_KEY,
-        algorithm=Config.JWT_ALGORITHM
-    )
-    
+
+    jwt_token = create_auth_token(user_data["_id"])
+
     response = make_response(
-        jsonify({"message": "User created successfully", "user": user_data}), 201
+        jsonify({
+            "message": "User created successfully",
+            "user": serialize_data(user_data),
+        }),
+        201,
     )
-    
-    response.set_cookie(
-        "access_token",
-        jwt_token,
-        httponly=Config.COOKIE_HTTPONLY,
-        secure=Config.COOKIE_SECURE,
-        max_age=Config.COOKIE_MAX_AGE,
-        samesite=Config.COOKIE_SAMESITE
-    )
-    
-    return response
+    return set_auth_cookie(response, jwt_token)
 
 
 @auth_bp.route("/login", methods=["POST"])
 def login():
-    """Handle user login"""
-    data = request.json
-    
-    if not data.get("email") or not data.get("password"):
-        return jsonify({"error": "Email and password are required"}), 400
-    
-    user = user_model.find_by_email(data["email"])
-    
-    if not user:
+    """Handle user login."""
+    data = request.get_json(silent=True) or {}
+
+    email = data.get("email")
+    password = data.get("password")
+
+    if not email or not password:
+        return jsonify({
+            "error": "Email and password are required"
+        }), 400
+
+    user = user_model.find_by_email(email)
+
+    if not user or not user_model.verify_password(
+        password, user["password"]
+    ):
         return jsonify({"error": "Invalid credentials"}), 401
-    
-    if not user_model.verify_password(data["password"], user["password"]):
-        return jsonify({"error": "Invalid credentials"}), 401
-    
-    jwt_token = jwt.encode(
-        {
-            "user_id": str(user["_id"]),
-            "exp": datetime.now(timezone.utc) + relativedelta(months=Config.JWT_EXPIRATION_MONTHS)
-        },
-        Config.SECRET_KEY,
-        algorithm=Config.JWT_ALGORITHM
-    )
-    
+
+    jwt_token = create_auth_token(user["_id"])
+
     response = make_response(
         jsonify({
             "message": "Login successful",
-            "user": {"name": user.get("fullName", user["username"]), "email": user["email"]}
-        }), 200
+            "user": {
+                "name": user.get("fullName", user["username"]),
+                "email": user["email"],
+            },
+        }),
+        200,
     )
-    
-    response.set_cookie(
-        "access_token",
-        jwt_token,
-        httponly=Config.COOKIE_HTTPONLY,
-        secure=Config.COOKIE_SECURE,
-        max_age=Config.COOKIE_MAX_AGE,
-        samesite=Config.COOKIE_SAMESITE
-    )
-    
-    return response
+    return set_auth_cookie(response, jwt_token)
 
 
 @auth_bp.route("/logout", methods=["POST"])
 def logout():
-    """Handle user logout"""
-    response = make_response(jsonify({"message": "Logged out"}), 200)
-    response.delete_cookie("access_token")
-    return response
-
+    """Clear the authentication cookie."""
+    response = make_response(
+        jsonify({"message": "Logged out"}),
+        200,
+    )
+    return clear_auth_cookie(response)
 
 @auth_bp.route("/check", methods=["GET"])
 @token_required

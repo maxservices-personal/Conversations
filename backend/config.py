@@ -14,12 +14,12 @@ class Config:
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  
     ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'pdf', 'webp'}
     
-    CORS_ORIGINS = ["http://localhost:5173"]
+    CORS_ORIGINS = ["http://localhost:5173", "https://conversations-eta-six.vercel.app"]
     
     COOKIE_MAX_AGE = 3 * 30 * 24 * 60 * 60 # 3 m
-    COOKIE_HTTPONLY = True
+    COOKIE_HTTPONLY = False
     COOKIE_SECURE = True
-    COOKIE_SAMESITE = "Strict"
+    COOKIE_SAMESITE = "none"
     
     JWT_ALGORITHM = "HS256"
     JWT_EXPIRATION_MONTHS = 3
