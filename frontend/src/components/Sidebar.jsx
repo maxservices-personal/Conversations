@@ -1,5 +1,5 @@
 import { Ellipsis, LogOut, Plus, RefreshCw, Settings, User, Users } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { useChatStore } from "../store/useChatStore";
 import { useMessageStore } from "../store/useMessagestore";
