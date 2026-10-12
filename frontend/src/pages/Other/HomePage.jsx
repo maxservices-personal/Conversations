@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Sidebar from "../../components/Sidebar-2";
+import Sidebar from "../../components/Sidebar";
 import ChatScreen from "../../components/HomePageComponents/ChatScreen";
 import { useChatStore } from "../../store/useChatStore";
 import ChatNotSelected from "../../components/HomePageComponents/ChatNotSelected";
