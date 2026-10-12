@@ -18,6 +18,7 @@ const Navbar = () => {
             <h1 className='text-[20px] font-semibold'>Conversations</h1>
             <div className="bg-black h-[30px] rounded-3xl w-[1px]  "></div>
             <div className='text-[16px] text-[#2e2e2e]'>Elactice Group</div>
+            <button className="text-bold text-white px-2 py-1 rounded-full bg-blue-500 " onClick={()=>{window.location.reload()}}>Please Reload</button>
         </div>
     </div>
   )
