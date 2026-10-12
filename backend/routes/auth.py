@@ -190,10 +190,7 @@ def login():
     response = make_response(
         jsonify({
             "message": "Login successful",
-            "user": {
-                "name": user.get("fullName", user["username"]),
-                "email": user["email"],
-            },
+            "user": serialize_data(user),
         }),
         200,
     )
