@@ -97,7 +97,7 @@ const ChatHeader = () => {
               {selectedFriend.name}
             </span>
             {getStatusText(selectedFriend) ? (
-              <span className="block text-[14px] text-[#8f8f8f] font-semibold">
+              <span className="block text-[14px] text-[#8f8f8f] font-semibold text-ellipsis text-nowrap">
                 {isFriendTyping ? "Typing..." : getStatusText(selectedFriend)}
               </span>
             ) : (
@@ -110,12 +110,12 @@ const ChatHeader = () => {
             isContactInfo ? "mr-[410px]" : "mr-3"
           } mr-3 transition-all flex items-center`}
         >
-          <SingleTypeButton className={"mr-2"}>
+          <SingleTypeButton className={""}>
             <Search />
           </SingleTypeButton>
-          <SingleTypeButton OnChick={() => setSelectedFriend(null)}>
+          {/* <SingleTypeButton OnChick={() => setSelectedFriend(null)}>
             <Ellipsis className="rotate-90" />
-          </SingleTypeButton>
+          </SingleTypeButton> */}
           <SingleTypeButton
             OnChick={() => toggleSidebar(true)}
             className={
