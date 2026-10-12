@@ -8,6 +8,9 @@ import { useUIStore } from "../store/useUIStore";
 import SingleTpyeButton from "../components/UIComponents/SingleTypeButton"
 import Profile from "./UIComponents/Profile";
 import Logo from "./SidebarComponents/addons/Logo";
+import ChatsSideBarSection from "./SidebarComponents/ChatsSideBarSection";
+import ChatsSideBarExplore from "./SidebarComponents/ChatsSideBarExplore";
+import UserAvatar from "./SidebarComponents/addons/UserAvatar";
 
 
 
