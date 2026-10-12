@@ -15,7 +15,6 @@ const SetUpPage = () => {
     const handleReload = ()=>{
         // navigate to home page and reload the page
         window.location.href = '/';
-        window.location.reload();
     }
 
   return (
