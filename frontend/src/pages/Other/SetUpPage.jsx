@@ -12,15 +12,15 @@ const SetUpPage = () => {
         phoneNumber: ''
     })
 
-    useEffect(()=>{
-        if (authUser?.isSetup) {
-            window.location.reload();
-        }
-    })
+    const handleReload = ()=>{
+        // navigate to home page and reload the page
+        window.location.href = '/';
+        window.location.reload();
+    }
 
   return (
     <div className='w-full h-[90%]  flex justify-center items-center'>
-        <div className="w-fit h-fit border border-token-border-medium rounded-2xl bg-token-base-200 p-5">
+        {/* <div className="w-fit h-fit border border-token-border-medium rounded-2xl bg-token-base-200 p-5">
             <div className="text-[24px] ml-2 text-[#161616] font-semibold"><span className="text-[24px] font-normal text-[#555]">Getting started,</span> {authUser?.username}</div>
             <div className="mt-10 ml-2 flex items-center flex-col">
                 <div className="w-[120px] object-cover flex items-center justify-center relative h-[120px] overflow-hidden border border-token-border-medium rounded-full bg-token-base-300">
@@ -57,6 +57,11 @@ const SetUpPage = () => {
             <div className='w-full justify-end mt-10 flex '>
                 <button onClick={() => updateProfile(setUpData)} disabled={setUpData.name === '' || setUpData.bio === ''} className='p-2 px-4 border border-token-border-medium rounded-3xl bg-black hover:bg-[#000000cd] transition-colors disabled:bg-[#9f9f9f91] text-white '>Continue</button>
             </div>
+        </div> */}
+        <div className="flex w-full h-screen items-center flex-col gap-2 justify-center">
+            <p className="text-xl">No setup required, Please reload.</p>
+            <button className="text-bold text-white px-5 py-3 rounded-full bg-blue-500 " onClick={handleReload}>Reload</button>
+
         </div>
 
     </div>
