@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useParams } from "react-router-dom";
-import Sidebar from '../Sidebar';
+import Sidebar from '../Sidebar-2';
 import { useUIStore } from '../../store/useUIStore';
 import {easeInOut, motion } from "framer-motion"
 import UserAvatar from './addons/UserAvatar';
