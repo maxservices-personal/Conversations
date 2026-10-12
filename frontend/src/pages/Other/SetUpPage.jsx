@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuthStore } from '../../store/useAuthStore'
 import { Edit, Upload, UserCircle } from 'lucide-react';
 
@@ -10,6 +10,12 @@ const SetUpPage = () => {
         name: '',
         bio: '',
         phoneNumber: ''
+    })
+
+    useEffect(()=>{
+        if (authUser?.isSetup) {
+            window.location.reload();
+        }
     })
 
   return (
