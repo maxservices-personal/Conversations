@@ -68,10 +68,8 @@ const App = () => {
           path="/"
           element={
             authUser ? (
-              authUser?.isSetUp ? (
+              authUser?.isSetUp && (
                 <HomePage />
-              ) : (
-                <Navigate to={"/setup"} />
               )
             ) : (
               <Navigate to={"/login"} />
