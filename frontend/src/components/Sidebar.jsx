@@ -94,7 +94,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className={`h-full relative z-20 overflow-hidden max-sm:absolute w-[320px] p-2 bg-base-200 backdrop-blur-md sm:backdrop-blur-none  border-token-border-medium transition-all duration-700 ${!isSidebarOpen ? "left-[-100%]" : "left-0"} sm:left-0`}>
+      <div className={`h-full relative z-[21] overflow-hidden max-sm:absolute w-[320px] p-2 bg-base-200 backdrop-blur-md sm:backdrop-blur-none  border-token-border-medium transition-all duration-700 ${!isSidebarOpen ? "left-[-100%]" : "left-0"} sm:left-0`}>
         <div className={`fixed w-[320px] z-[100] top-0 ${isScrolled && "bg-base-100"} transition-all`}>
             <div className="w-full flex p-3 pt-3 pb-2 items-center gap-1">
                 <span className={`${theme === "dark" ? "text-[hsl(208,54%,53%)]" : "text-[hsl(208,48%,44%)]"} mb-[5px]`}>
@@ -215,6 +215,7 @@ const Sidebar = () => {
             </button>
         </div>
       </div>
+      <div onClick={toggleSidebar} className={`w-full block md:hidden [calc(100%-320px)] transition-opacity ${!isSidebarOpen ? "opacity-0 pointer-events-none" : "opacity-45 pointer-events-auto"} duration-700 h-screen absolute right-0 top-0 z-20 bg-black`}></div>
       </>
   );
 };

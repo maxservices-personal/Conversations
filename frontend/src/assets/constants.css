@@ -220,7 +220,7 @@
 
 
 .gradient-blur {
-  background: linear-gradient(180deg, var(--bg-gradient-blured));
+  background: linear-gradient(to bottom, #ffffff 20%, transparent 100%);
 }
 
 .gradient-blur-2 {

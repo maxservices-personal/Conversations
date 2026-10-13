@@ -83,7 +83,7 @@ const ChatHeader = () => {
   };
   return (
     <>
-      <div className="w-full flex items-start pt-2 z-[200] absolute top-0 left-0 justify-between h-[120px] border-token-border-medium gradient-blur ">
+      <div className="w-full flex items-start pt-2 z-[200] gradient-blur absolute top-0 left-0 justify-between h-[120px] border-token-border-medium gradient-blur ">
         <div
           onClick={() => setIsContactInfo(!isContactInfo)}
           className="flex select-none cursor-pointer items-center ml-2"
@@ -97,7 +97,7 @@ const ChatHeader = () => {
               {selectedFriend.name}
             </span>
             {getStatusText(selectedFriend) ? (
-              <span className="block text-[14px] text-[#8f8f8f] font-semibold text-ellipsis text-nowrap">
+              <span className="block text-[14px] max-w-[130px] lg:max-w-[200px] xl:max-w-full overflow-hidden text-[#8f8f8f] font-semibold text-ellipsis text-nowrap">
                 {isFriendTyping ? "Typing..." : getStatusText(selectedFriend)}
               </span>
             ) : (

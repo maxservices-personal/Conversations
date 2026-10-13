@@ -322,7 +322,7 @@ const ChatContainer = ({ playSound }) => {
     <div
       ref={containerRef}
       onScroll={handleScroll}
-      className="w-full h-full overflow-auto pt-[78px] pb-[20px]"
+      className="w-full h-screen overflow-auto pt-[78px] pb-[20px]"
     >
       {isGettingMessages && (
         <div className="w-full text-[#555] h-full flex items-center justify-center">
