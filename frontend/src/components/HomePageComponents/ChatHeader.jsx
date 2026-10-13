@@ -119,7 +119,7 @@ const ChatHeader = () => {
           <SingleTypeButton
             OnChick={() => toggleSidebar(true)}
             className={
-              "ml-2  bg-[#ffffff29] block sm:hidden border-none backdrop-blur-sm"
+              "ml-2  bg-[#ffffff29] block sm:hidden backdrop-blur-sm"
             }
           >
             {isSidebarOpen ? (

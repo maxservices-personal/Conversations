@@ -7,7 +7,7 @@ const ChatScreen = ({ playSound }) => {
       const { isSidebarMinimized, toggleIsSidebarMinimized } = useUIStore();
   
   return (
-    <div className={`w-full border-l border-token-border-medium z-[2] transition-all duration-700 relative h-full ${isSidebarMinimized ? "md:w-[calc(100%-70px)]" : "md:w-[calc(100%-320px)]"}`}>
+    <div className={`w-full border-l border-token-border-medium z-[2] transition-all duration-700 relative h-[100dvh] ${isSidebarMinimized ? "md:w-[calc(100%-70px)]" : "md:w-[calc(100%-320px)]"}`}>
       <ChatHeader />
       <ChatContainer playSound={playSound} />
     </div>
